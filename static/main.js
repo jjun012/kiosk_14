@@ -253,24 +253,19 @@ function back_2_window_btn() {
 function open_w_카드결제() {
     document.getElementById("w_카드결제").style.display = 'block';
     document.getElementById("window_pay").style.display = 'none';
-    document.getElementById("w_카드결제_total_price").innerText = total_list[1]+"원";
-
-    document.getElementById("insert_card_moving").style.display='block';
-    
+    document.getElementById("w_카드결제_total_price").innerText = total_list[1] + "원";
+    document.getElementById("insert_card_moving").style.display = 'block';
 }
 
 function close_w_카드결제() {
     document.getElementById("w_카드결제").style.display = 'none';
     document.getElementById("screen_to_window_pay").style.display = 'none';
     document.getElementById("insert_card_moving").style.display = 'none';
-
 }
 
 function 결제완료() {
-    alert("감사합니다. 결제가 완료되었습니다. 교환권과 카드를 챙겨가세요.");
-    location.href = "mega.html";
+    document.getElementById("payment_complete_screen").style.display = 'block';
 }
-
-function herf_home() {
-    location.href = "mega.html";
+function redirect_to_home() {
+    location.href = "http://127.0.0.1:5000/";
 }
