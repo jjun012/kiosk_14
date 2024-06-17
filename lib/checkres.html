@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예약 확인 페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff7300;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff7300;
+        }
+        .message {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>예약 확인</h2>
+        <form id="reservationForm">
+            <label for="reservationNumber">예약번호:</label>
+            <input type="text" id="reservationNumber" name="reservationNumber" required>
+            <br>
+            <button type="submit">확인</button>
+        </form>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        // 예약 확인을 처리하는 함수
+        function checkReservation(event) {
+            event.preventDefault(); // 폼의 기본 동작 방지
+
+            // 예약번호 입력 값 가져오기
+            var reservationNumber = document.getElementById('reservationNumber').value;
+
+            // 여기서는 예제로 예약번호가 '12345'일 때 일치한다고 가정
+            var validReservationNumber = '12345';
+
+            // 예약번호 일치 여부 확인
+            if (reservationNumber === validReservationNumber) {
+                document.getElementById('message').textContent = '예약번호가 일치합니다. 예약 상세 정보를 표시합니다.';
+                // 여기에 실제 예약 상세 정보를 표시하는 로직을 추가할 수 있음
+            } else {
+                document.getElementById('message').textContent = '예약번호가 일치하지 않습니다. 다시 입력해주세요.';
+                // 여기에 재입력 요청 팝업을 구현할 수 있음
+            }
+        }
+
+        // 폼 제출 시 checkReservation 함수 실행
+        var form = document.getElementById('reservationForm');
+        form.addEventListener('submit', checkReservation);
+    </script>
+</body>
+</html>

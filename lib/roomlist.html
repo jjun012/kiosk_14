@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>방목록</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .room-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .room-item {
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .room-details {
+            flex-grow: 1;
+        }
+
+        .room-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .room-price {
+            font-size: 16px;
+            color: #007bff;
+        }
+
+        .select-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #28a745;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .select-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">방 목록</div>
+        <ul class="room-list" id="roomList">
+            <!-- 방 목록 아이템 -->>
+        </ul>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // API
+            fetch('/api/rooms')
+                .then(response => response.json())
+                .then(data => {
+                    const roomList = document.getElementById('roomList');
+                    data.rooms.forEach(room => {
+                        const listItem = document.createElement('li');
+                        listItem.className = 'room-item';
+                        listItem.innerHTML = `
+                            <div class="room-details">
+                                <div class="room-name">${room.name}</div>
+                                <div class="room-price">${room.price}원</div>
+                            </div>
+                            <button class="select-button" onclick="selectRoom(${room.id})">선택</button>
+                        `;
+                        roomList.appendChild(listItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching room data:', error);
+                });
+        });
+
+        function selectRoom(roomId) {
+            // 선택한 방의 상세 정보
+            window.location.href = `/room-details.html?roomId=${roomId}`;
+        }
+    </script>
+</body>
+</html>
