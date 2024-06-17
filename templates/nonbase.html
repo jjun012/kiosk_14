@@ -166,8 +166,19 @@
                     </div>
                     <div id="w_bottom">
                         <div id="취소" onclick="close_w_카드결제()">취소</div>
-                        <div id="승인요청"> 승인요청</div>
+                        <div id="승인요청" onclick="결제완료()">승인요청</div>
                     </div>
+                
+                    <div id="payment_complete_screen">
+                        <div class="popup-content">
+                            <h2>결제가 완료되었습니다!</h2>
+                            <p>감사합니다. 결제가 완료되었습니다.카드를 챙겨가세요.</p>
+                            <button onclick="redirect_to_home()">확인</button>
+                        </div>
+                    </div>
+                
+                    <!-- 카드결제 버튼 -->
+                    <button onclick="open_w_카드결제()">카드결제</button>
                 </div>
 
             </div>
