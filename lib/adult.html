@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성인 인증</title>
+    <link rel="stylesheet" href="adult.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>성인 인증</h2>
+        <form id="verificationForm" onsubmit="return validateForm()">
+            <label for="dateOfBirth">생년월일:</label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+
+            <label for="phoneNumber">휴대폰 번호:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" required>
+            <small>예시: 010-1234-5678</small>
+
+            <button type="submit">확인</button>
+        </form>
+    </div>
+
+    <script src="adult.js"></script>
+</body>
+
+</html>
