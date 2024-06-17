@@ -1,0 +1,20 @@
+{% extends "nonbase.html" %}
+
+{% block content %}
+<h2>Room Details</h2>
+<div>
+    <h3>Room Number: {{ room.id }}</h3>
+    <p>Type: {{ room.type }}</p>
+    <p>Price: ${{ room.price }}</p>
+    <p>Description: {{ room.info }}</p>
+    <p>Availability: {{ 'Available' if room.available else 'Booked' }}</p>
+    <p>
+        <img src="{{ url_for('static', filename=room.photo) }}" alt="Room Image" width="300">
+        <!-- {% if room.image %}
+        <img src="{{ url_for('static', filename=room.photo) }}" alt="Room Image" width="300">
+        {% else %}
+        No Image
+        {% endif %} -->
+    </p>
+</div>
+{% endblock %}

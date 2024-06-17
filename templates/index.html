@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Available Rooms</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Room Number</th>
+            <th>Type</th>
+            <th>Price</th>
+            <th>Availability</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for room in rooms %}
+        <tr onclick="detail('{{ room.id }}')" style="cursor:pointer;">
+            <td>{{ room.id }}</td>
+            <td>{{ room.type }}</td>
+            <td>${{ room.price }}</td>
+            <td>
+                <img src="{{ url_for('static', filename=room.photo) }}", width="100%" height="100%" style=" display:block; margin-left: auto; margin-right: auto;">
+                <!-- {% if room.image %}
+                <img src="{{ url_for('uploaded_file', filename=room.image) }}" alt="Room Image" width="100">
+                {% else %}
+                No Image
+                {% endif %} -->
+            </td>
+            <td>
+                {% if room.available %}
+                <a href="{{ url_for('book', room_id=room_id) }}">Book</a>
+                {% else %}
+                Unavailable
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
