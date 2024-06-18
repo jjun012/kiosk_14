@@ -227,6 +227,35 @@ function write_order_list_window_pay (order_list) {
 
 }
 
+/*결제 창*/
+function open_window_pay() {
+    // 결제 정보 창을 표시합니다.
+    document.getElementById('screen_to_window_pay').style.display = 'block';
+    document.getElementById('window_pay').style.display = 'block';
+
+    // 결제 정보를 채웁니다 (예시)
+    // 실제 동적 데이터를 채우는 방식으로 수정하세요
+    document.getElementById('w_order_1').innerText = 'room 101';
+    document.getElementById('w_number_1').innerText = '1';
+
+    // 총 수량과 총 결제 금액 계산 예시
+    var totalNumber = 1;  // 예시 계산
+    var totalPrice = 1000000;  // 예시 계산
+
+    document.getElementById('w_total_number').innerText = totalNumber;
+    document.getElementById('w_total_price').innerText = totalPrice;
+
+    document.getElementById("돌아가기").style.display = 'block';
+    document.getElementById("가져가기").style.display = 'block';
+
+    document.getElementById("돌아가기_2").style.display = 'none';
+    document.getElementById("쿠폰사용").style.display = 'none';
+    document.getElementById("페이코").style.display = 'none';
+    document.getElementById("카드결제").style.display = 'none';
+
+
+}
+
 // 추가된 코드: 헬스장 사용료 관련 처리
 var gym_fee = 10000; // 헬스장 사용료
 
@@ -271,7 +300,7 @@ function open_order_list(order_list) {
     total_list[1] = total_price;
 }
 
-ㄴ
+
 
 function change_window_btn() {
     document.getElementById("돌아가기").style.display = 'none';
