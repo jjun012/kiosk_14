@@ -227,6 +227,52 @@ function write_order_list_window_pay (order_list) {
 
 }
 
+// 추가된 코드: 헬스장 사용료 관련 처리
+var gym_fee = 10000; // 헬스장 사용료
+
+function addGymFee() {
+    var checkbox = document.getElementById("gym_checkbox");
+    var gymFee = document.getElementById("gym_fee");
+
+    if (checkbox.checked) {
+        gymFee.textContent = "10000원"; 
+    } else {
+        gymFee.textContent = "0원"; 
+    }
+    open_order_list(order_list);
+
+
+}
+function open_order_list(order_list) {
+    var total_num = 0;
+    var total_price = 0;
+
+    for (var i = 0; i < order_list.length; i++) {
+        var order_id = "order_" + (i + 1);
+        document.getElementById(order_id).style.display = 'flex';
+
+        document.getElementById("range_" + (i + 1)).innerText = (i + 1) + ". " + (order_list[i].name);
+        document.getElementById("amount_" + (i + 1)).innerText = (order_list[i].number) + "개";
+        document.getElementById("item_price_" + (i + 1)).innerText = (order_list[i].price) * (order_list[i].number) + "원";
+
+        total_num += order_list[i].number;
+        total_price += (order_list[i].price) * (order_list[i].number);
+    }
+
+    var gym_fee_element = document.getElementById("gym_fee");
+    total_price += parseInt(gym_fee_element.innerText);
+
+    document.getElementById("item_number").innerHTML = "_________________________<br>선택한 상품 " + (total_num) + "개";
+    document.getElementById("total_price").innerHTML = (total_price) + "원<br>결제하기";
+
+    document.getElementById('w_total_price').innerText = total_price + '원';
+
+    total_list[0] = total_num;
+    total_list[1] = total_price;
+}
+
+ㄴ
+
 function change_window_btn() {
     document.getElementById("돌아가기").style.display = 'none';
     document.getElementById("먹고가기").style.display = 'none';
